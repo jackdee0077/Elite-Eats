@@ -1,13 +1,14 @@
 # Elite-Eats
 
-#Group Members   
-Daniel Jackson - jackdee0077
-Valerie Trimble - vwilliams86
-Jerial Slay - jerielslay
+### Group Members   
+* Daniel Jackson - jackdee0077
+* Valerie Trimble - vwilliams86
+* Jerial Slay - jerielslay
 
-Christopher Baker - Mentor - cgbaker
-Christopher Storrer - JTC Allum - storrer
+* Christopher Baker - Mentor - cgbaker
+* Christopher Storrer - JTC Allum - storrer
 
+### Development
 
 To start building the project:
 1. Create a virtual environment
