@@ -6,5 +6,4 @@ class Restaurant(models.Model):
     address = models.CharField(max_length=60)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=2)
-    zip_code = models.CharField(max_length=5)
-    cuisine = models.CharField(max_length=15)
+    zip_code = models.CharField(max_length=5); 
