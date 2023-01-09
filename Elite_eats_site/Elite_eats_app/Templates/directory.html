@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<h3><c>Restaurant Directory</c></h3>
+
+<ul>
+    {% for restaurant in restaurant_list %}
+    <li> {{ restaurant.name }}</li>
+    {% endfor %}
+</ul>
