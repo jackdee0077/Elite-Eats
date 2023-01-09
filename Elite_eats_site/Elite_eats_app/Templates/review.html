@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<h3>Restaurant Reviews</h3>
+
+<form method="post" action="{%url 'review' %}">
+    {% csrf_token %}
+        {{ form }}
+    <input type="submit" name="create" value="Submit "/>
+</form>
+
+<p>
+    {% for review in all_reviews %}
+        <br>{{ review.review }}<br>
+    {% endfor %}
+</p>
+
