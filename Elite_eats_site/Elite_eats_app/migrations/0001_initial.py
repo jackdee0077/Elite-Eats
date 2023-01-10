@@ -20,15 +20,10 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(max_length=30)),
                 ('state', models.CharField(max_length=2)),
                 ('zip_code', models.CharField(max_length=5)),
-Search-Bar--daniel-and-Val
+                ('cuisine', models.CharField(max_length=15)),
             ],
             options={
                 'verbose_name_plural': 'Elite_eats_app',
             },
         ),
-
-                ('cuisine', models.CharField(max_length=15)),
-            ],
-        )
-
     ]
