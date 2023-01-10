@@ -2,9 +2,12 @@ from django.shortcuts import render
 
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
-
+from django.views import View
 
 from. models import Restaurant
+
+from Elite_eats_app.models import Restaurant, Post
+from Elite_eats_app.forms import PostForm
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -21,10 +24,6 @@ class SearchResultsView(ListView):
         return object_list
         #return Restaurant.objects.filter(name__icontains='Licky')
     
-
-from django.views import View
-from Elite_eats_app.models import Restaurant, Post
-from Elite_eats_app.forms import PostForm
 
 # Create your views here.
 
