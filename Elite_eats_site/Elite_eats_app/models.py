@@ -22,3 +22,11 @@ class Restaurant(models.Model):
 class Post(models.Model):
     review = models.CharField(max_length=1500)
 
+   #we made this image( was post )
+class Image(models.Model):
+    title = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title
+image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
