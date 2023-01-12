@@ -3,22 +3,37 @@ from django.db import models
 
 # Create your models here.
 
+class Tag(models.Model):
+    hashtag = models.CharField(max_length=100)
+
+    def _str_(self):
+        return self.hashtag
+
 class Restaurant(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=80)
     address = models.CharField(max_length=60)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=2)
-
-    zip_code = models.CharField(max_length=5);
+    zip_code = models.CharField(max_length=5)
+    hashtag = models.ManyToManyField(Tag, blank=True)
 
     class Meta:
-        verbose_name_plural = "Elite_eats_app"
+        verbose_name_plural = "Restaurants"
     
     def _str_(self):
         return self.name
 
-    zip_code = models.CharField(max_length=5)
+    # zip_code = models.CharField(max_length=5)
 
 class Post(models.Model):
+    restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
     review = models.CharField(max_length=1500)
 
+   #we made this image( was post )
+class Image(models.Model):
+    title = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title
+image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)

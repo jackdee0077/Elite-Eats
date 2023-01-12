@@ -1,10 +1,13 @@
-<h1>Search Results</h1>
+{% extends 'base.html' %}
 
-<ul>
-  {% for Restaurant in object_list %}
-    <li>
-      {{ Restaurant.name }}, {{ Restaurant.address }}, {{ Restaurant.city }}, {{ Restaurant.state }}, {{ Restaurant.zip_code }}, 
-    </li>
-  {% endfor %}
-</ul>
+{% block content %}
+  <h1>Search Results</h1>
 
+  <ul>
+    {% for Restaurant in object_list %}
+      <li>
+        {{ Restaurant.name }}, {{ Restaurant.address }}, {{ Restaurant.city }}, {{ Restaurant.state }}, {{ Restaurant.zip_code }}, 
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
