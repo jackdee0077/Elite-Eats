@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<h3>Restaurant Reviews</h3>
+{% extends 'base.html' %}
 
-<form method="post" action="{%url 'review' %}">
-    {% csrf_token %}
-        {{ form }}
-    <input type="submit" name="create" value="Submit "/>
-</form>
+{% block content %}
+    <h3>Restaurant Reviews</h3>
 
-<p>
-    {% for review in all_reviews %}
-        <br>{{ review.review }}<br>
-    {% endfor %}
-</p>
+    <form method="post" action="{%url 'review' %}">
+        {% csrf_token %}
+            {{ form }}
+        <input type="submit" name="create" value="Submit "/>
+    </form>
+
+        <p>
+        {% for review in all_reviews %}
+            {{ review.review }}
+        {% endfor %}
+        </p>
+
+{% endblock %}
 

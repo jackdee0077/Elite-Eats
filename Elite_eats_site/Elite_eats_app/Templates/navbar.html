@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg" style="background-color:#008037;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}" style="color:#FF914D"><img src="https://i.ibb.co/9hcLCGr/Elite-Eats.png" width="30" height="30"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color:#FF914D">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'trending' %}" style="color:#FF914D">Trending</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#FF914D">
+              Directories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" style="color:#FF914D">By Restaurant &rsaquo;</a></li>
+                <ul class='dropdown-menu submenu'>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">The Chelsea House</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">212 Steakhouse</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">Papi Steak</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">Sexy Fish Miami</a></li>
+                </ul>
+              <li><a class="dropdown-item" href="#" style="color:#FF914D">By State &rsaquo;</a></li>
+                <ul class='dropdown-menu submenu'>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">FL</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">GA</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">NY</a></li>
+                  <li><a class="dropdown-item" href="#" style="color:#FF914D">NV</a></li>
+                </ul>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'directory' %}" style="color:#FF914D">All</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'review' %}" style="color:#FF914D">New Review</a>
+          </li>
+        </ul>
+        <form action="{% url 'search_results' %}" method="get">
+          <input name="q" type="text" placeholder="Search...">
+          <input type="submit" name="create" value="Submit "/>
+        </form>
+      </div>
+    </div>
+  </nav>

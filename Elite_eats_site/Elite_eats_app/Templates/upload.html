@@ -1,19 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center><img src="https://i.ibb.co/9hcLCGr/Elite-Eats.png" alt="connect" style="max-height:300px"></center>
-
-<center><h3>Restaurant Reviews</h3></center>
-        <p>
-        {% for review in all_reviews %}
-            {{ review.review }}
-        {% endfor %}
-        </p>
-
-{% endblock %}
-
-
-
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
      {{ form.as_p }}
@@ -24,3 +11,5 @@
     <h3>Succesfully uploaded : {{img_obj.title}}</h3>
     <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
   {% endif %}
+
+  {% endblock %}

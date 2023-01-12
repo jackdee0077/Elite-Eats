@@ -1,11 +1,11 @@
-from django.forms import ModelForm
-from Elite_eats_app.models import Post, Image
+from .models import Post, Image, Restaurant
 from django import forms
 
-class PostForm(ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['review']
+        restaurant = Restaurant.name
+        fields = ['review', 'restaurant']
 
 class ImageForm(forms.ModelForm):
     """Form for the image model"""
