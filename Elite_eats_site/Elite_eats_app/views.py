@@ -5,9 +5,11 @@ from django.views import View
 from .models import Restaurant
 from Elite_eats_app.models import Restaurant, Post
 from Elite_eats_app.forms import PostForm
+from .forms import ImageForm
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
+    
 
 class SearchResultsView(ListView):
     model = Restaurant
