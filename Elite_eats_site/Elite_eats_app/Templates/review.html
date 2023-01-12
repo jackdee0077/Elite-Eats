@@ -9,10 +9,11 @@
         <input type="submit" name="create" value="Submit "/>
     </form>
 
-    <p>
+        <p>
         {% for review in all_reviews %}
-            <br>{{ review.review }}<br>
+            {{ review.review }}
         {% endfor %}
-    </p>
+        </p>
+
 {% endblock %}
 
