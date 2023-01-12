@@ -29,4 +29,4 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
-image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
+    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
