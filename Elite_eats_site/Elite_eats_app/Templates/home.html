@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'search_results' %}" method="get">
-    <input name="q" type="text" placeholder="Search...">
-  </form>
+<center><img src="https://i.ibb.co/9hcLCGr/Elite-Eats.png" alt="connect" style="max-height:300px"></center>
 
-  <form method="post" enctype="multipart/form-data">
+<center><h3>Restaurant Reviews</h3></center>
+        <p>
+        {% for review in all_reviews %}
+            {{ review.review }}
+        {% endfor %}
+        </p>
+
+{% endblock %}
+
+
+
+  <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
      {{ form.as_p }}
-    <button type="submit">Upload</button>
+    <button type="submit" value="Submit" class="btn btn-secondary">Upload</button>
   </form>
   
   {% if img_obj %}

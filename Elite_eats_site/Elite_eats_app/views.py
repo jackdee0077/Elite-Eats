@@ -6,10 +6,26 @@ from .models import Restaurant
 from Elite_eats_app.models import Restaurant, Post
 from Elite_eats_app.forms import PostForm
 from .forms import ImageForm
+from django.http import HttpResponseRedirect
+# from django.views.generic import 
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
     
+
+class TrendingView(View):
+    def get(self, request):
+        restaurants = Restaurant.objects.all()
+
+        html_data = {
+            'restaurant_list': restaurants
+        }
+
+        return render(
+            request=request,
+            template_name='trending.html',
+            context=html_data,
+            )
 
 class SearchResultsView(ListView):
     model = Restaurant
@@ -21,9 +37,8 @@ class SearchResultsView(ListView):
             Q(name__icontains=query) | Q(address__icontains=query) | Q(city__icontains=query) | Q(state__icontains=query) | Q(zip_code__icontains=query)
         )
         return object_list
-        #return Restaurant.objects.filter(name__icontains='Licky')
+        # return Restaurant.objects.filter(name__icontains='Licky')
     
-
 # Create your views here.
 
 class DirectoryView(View):
@@ -41,6 +56,9 @@ class DirectoryView(View):
             )
 
 class PostView(View):
+    
+    submitted = False
+
     def get(self, request):
         review_form = PostForm()
         reviews = Post.objects.all()
@@ -75,13 +93,19 @@ class PostView(View):
         )
 def image_upload_view(request):
     """Process images uploaded by users"""
+    form = ImageForm
+    submitted = False
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             # Get the current instance object to display in the template
             img_obj = form.instance
-            return render(request, 'home.html', {'form': form, 'img_obj': img_obj})
+            return HttpResponseRedirect('/upload.html?submitted=True'),
+            return render(request, 'upload.html', {'form': form, 'img_obj': img_obj})
     else:
         form = ImageForm()
-    return render(request, 'home.html', {'form': form})
+        if 'submitted' in request.GET:
+            submitted = True
+        return render(request, 'upload.html', {'form': form, 'submitted':submitted})
+

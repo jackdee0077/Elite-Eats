@@ -1,4 +1,7 @@
 from django.db import models
+# from django.views.generic import ListView, CreateView
+from django.urls import reverse_lazy
+# from .forms import PostForm
 
 
 # Create your models here.
@@ -25,9 +28,10 @@ class Restaurant(models.Model):
 
     # zip_code = models.CharField(max_length=5)
 
+
 class Post(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
-    review = models.CharField(max_length=1500)
+    review = models.TextField(max_length=1500)
 
    #we made this image( was post )
 class Image(models.Model):
@@ -36,4 +40,4 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
-image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
+    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
