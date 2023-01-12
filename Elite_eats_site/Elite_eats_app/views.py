@@ -1,11 +1,8 @@
 from django.shortcuts import render
-
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views import View
-
-from. models import Restaurant
-
+from .models import Restaurant
 from Elite_eats_app.models import Restaurant, Post
 from Elite_eats_app.forms import PostForm
 from .forms import ImageForm
