@@ -6,12 +6,12 @@
     <form method="post" action="{%url 'review' %}">
         {% csrf_token %}
             {{ form }}
-        <input type="submit" name="create" value="Submit "/>
+        <p><input type="submit" name="create" value="Submit "/></p>
     </form>
 
         <p>
         {% for review in all_reviews %}
-            {{ review.review }}
+            <p>{{review.review }}</p>
         {% endfor %}
         </p>
 
