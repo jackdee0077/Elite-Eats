@@ -92,7 +92,7 @@ class PostView(View):
             context=html_data,
         )
 def image_upload_view(request):
-    """Process images uploaded by users"""
+    # """Process images uploaded by users"""
     form = ImageForm
     submitted = False
     if request.method == 'POST':
