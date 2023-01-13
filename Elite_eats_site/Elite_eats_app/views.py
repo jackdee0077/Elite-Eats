@@ -93,6 +93,7 @@ class PostView(View):
             template_name='review.html',
             context=html_data,
         )
+
 class ImageUploadView(View):
     submitted = False
     model = Image
@@ -117,19 +118,16 @@ class ImageUploadView(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-
-            print(request.POST)
-            form = ImageForm(request.POST)
             form.save()
 
             html_data = {
                 'image': form,
-                'from': form }
+                'img_obj': form.instance }
 
-        return render(
-            request=request,
-            template_name='home.html',
-            context=html_data,
-        )
+            return render(
+                request=request,
+                template_name='home.html',
+                context=html_data,
+            )
 
        
