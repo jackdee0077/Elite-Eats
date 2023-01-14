@@ -1,6 +1,7 @@
 from django.urls import path
 
-from Elite_eats_app.views import DirectoryView, PostView, HomePageView, SearchResultsView, TrendingView, image_upload_view
+from Elite_eats_app.views import DirectoryView, PostView, HomePageView, SearchResultsView, TrendingView, ImageUploadView
+
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
@@ -8,7 +9,6 @@ urlpatterns = [
     path('review.html', PostView.as_view(), name='review'),
     path("search/", SearchResultsView.as_view(), name='search_results'),
     path('trending.html', TrendingView.as_view(), name='trending'),
-    path('upload', image_upload_view, name='upload')
-   
+    path('upload', ImageUploadView.as_view(), name='upload')
     ]
 
