@@ -94,6 +94,7 @@ class PostView(View):
             context=html_data,
         )
 
+
 class ImageUploadView(View):
     submitted = False
     model = Image
