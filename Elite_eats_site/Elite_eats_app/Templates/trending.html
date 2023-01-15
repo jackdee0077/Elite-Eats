@@ -3,22 +3,87 @@
 {% block content %}
 <h3><center>Trending Restaurants</center></h3> 
 
-<center><a href="http://localhost:8000/review.html"><img 
-    src="https://s3-media0.fl.yelpcdn.com/bphoto/XD47TdJCdZxArzNuNpLk4g/o.jpg" 
-    alt="The Chelsea House"
-    style="width:100px;height:100px;">
-</a></center>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .img-container {
+      float: left;
+      width: 33.33%;
+      padding: 5px;
+    }
+    
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+</style>
 
-<center><a href="http://localhost:8000/review.html"><img 
-    src="https://s3-media0.fl.yelpcdn.com/bphoto/XD47TdJCdZxArzNuNpLk4g/o.jpg" 
-    alt="The Chelsea House"
-    style="width:100px;height:100px;">
-</a></center>
+<div class="clearfix">
+    <div class="img-container">
+        <a href="https://www.thechelseahousenyc.com" target="_blank" rel="noopener noreferrer"><img 
+        src="https://popmenucloud.com/tdihkevz/790a77fd-2463-4a93-a0f8-0f8264e7ff12.png" 
+        alt="The Chelsea House NYC Logo"
+        style="width:350px;height:150px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://www.212steakhouse.com" target="_blank" rel="noopener noreferrer"><img 
+        src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/60997574_2095385697254356_3822476977399398400_n.png?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vrawBasCiDUAX8s8yUv&_nc_ht=scontent-lga3-2.xx&oh=00_AfBjDjdFqYWpHXxz5WOtBpySOxkBemFStoOaLvyJ4o3mzw&oe=63EBA06B" 
+        alt="212 Steakhouse Logo"
+        style="width:330px;height:210px;"></a>
+    </div> 
+
+    <div class="img-container">
+        <a href="https://www.besobrooklyn.com" target="_blank" rel="noopener noreferrer"><img 
+            src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/restaurant/cover/BrooklynBesoRestaurantBarLewisAve370BrooklynNY.png" 
+            alt="Brooklyn Beso Logo"
+            style="width:365px;height:220px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://nostrandstation.squarespace.com/menu" target="_blank" rel="noopener noreferrer"><img 
+        src="https://scontent-lga3-2.xx.fbcdn.net/v/t39.30808-6/304582535_447965407353650_6157943704032549961_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZxyRgqsic0YAX9VHqTc&tn=5-IaPgAp7yAkEjek&_nc_ht=scontent-lga3-2.xx&oh=00_AfDCaRdQdPLkBb72wI6M1i71Jw-biCRo2is_5ZLatX7fVQ&oe=63C8C50A" 
+        alt="Nostrand Station Bar & Lounge Logo"
+        style="width:300px;height:300px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://footprintscafenyc.com" target="_blank" rel="noopener noreferrer"><img 
+        src="https://footprintscafenyc.com/wp-content/uploads/sites/2/2019/01/footprint-circle-logo.png" 
+        alt="Footprints Cafe Logo"
+        style="width:300px;height:300px;">
+    </a></div>
+
+    <div class="img-container">
+        <a href="https://stksteakhouse.com" target="_blank" rel="noopener noreferrer"><img 
+        src="https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_300,q_100,fl_lossy,dpr_2.0,c_fit,f_auto,h_300/av5ooobubojdbjdwbawz" 
+        alt="STK NYC"
+        style="width:300px;height:300px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://sexyfishmiami.com" target="_blank" rel="noopener noreferrer"><img 
+        src="https://dv1oh8li7xq0o.cloudfront.net/brands/5185732/brand_profile/faf84f8bfcd746aca47d8edd55ea8617/640_640.jpeg" 
+        alt="Sexy Fish Miami Logo"
+        style="width:300px;height:300px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://www.thecapitalgrille.com/home" target="_blank" rel="noopener noreferrer"><img 
+        src="data:image/png;base64,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" 
+        alt="The Capital Grille Logo"
+        style="width:300px;height:280px;"></a>
+    </div>
+
+    <div class="img-container">
+        <a href="https://www.thed.com/bars-dining/dining/andiamo-steakhouse/" target="_blank" rel="noopener noreferrer"><img 
+        src="https://vicarirestaurants.com/wp-content/uploads/2020/10/logo_jvsteakhouse.png" 
+        alt="Andiamo Steakhouse Logo"
+        style="width:440px;height:300px;"></a>
+    </div>
+</div>
 
 {% endblock %}
-<!-- <button type="button" onclick="alert('Hello world!')">The Chelsea House</button> -->
-<!-- <ul>
-    {% for restaurant in restaurant_list %}
-    <li> {{ restaurant.name }}</li>
-    {% endfor %}
-</ul> -->
