@@ -108,3 +108,7 @@ def image_upload_view(request):
             submitted = True
         return render(request, 'upload.html', {'form': form, 'submitted':submitted})
 
+def update_review(request, review_id ):
+    review = Post.objects.get(pk=review_id)
+    return render(request, 'review.html',
+    {'review': review})

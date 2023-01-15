@@ -4,8 +4,8 @@ from .models import Post, Image, Restaurant
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        restaurant = Restaurant.name
-        fields = ['review', 'restaurant']
+        restaurant = Restaurant.objects.name
+        fields = ['restaurant', 'review']
 
 class ImageForm(ModelForm):
     class Meta:

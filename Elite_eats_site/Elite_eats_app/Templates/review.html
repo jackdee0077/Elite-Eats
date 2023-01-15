@@ -5,15 +5,24 @@
 
     <form method="post" action="{%url 'review' %}">
         {% csrf_token %}
-            {{ form }}
+            <br>{{ form }}
         <p><input type="submit" name="create" value="Submit "/></p>
     </form>
-
-        <p>
+<br/>
+<table class="table table-striped table-hover table-bordered">
         {% for review in all_reviews %}
-            <p>{{review.review }}</p>
+            <tr>
+                <td>
+                    <strong>{{ review.restaurant }}</strong>
+                    <p> {{review.review }} </p>
+                </td>
+                <td align="right">
+                    <a href="{% url 'update-review' review.id %}">Update</a> <br> 
+                    <a href="">Delete</a>
+                </td>
+            </tr>    
         {% endfor %}
-        </p>
+</table>
 
 {% endblock %}
 
