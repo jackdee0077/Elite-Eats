@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import Restaurant
-from .models import Image
-admin.site.register(Image)
+from .models import Restaurant, Image, Post, Tag
+
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -12,11 +11,15 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('restaurant', 'review')
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('restaraunt' , 'hashtag')
+    list_display = ('hashtag',)
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('title' , 'image')
 
 
 # Register your models here.
 admin.site.register(Restaurant, RestaurantAdmin)
-
-
+admin.site.register(Image, ImageAdmin)
+admin.site.register(Post, PostAdmin)
+admin.site.register(Tag, TagAdmin)
 # Register your models here.

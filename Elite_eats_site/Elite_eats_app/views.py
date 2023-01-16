@@ -118,7 +118,7 @@ class ImageUploadView(View):
         html_data = {
                 'image': form,
                 'from': form }
-                
+
         return render(request, self.template_name, {'form': ImageForm})
 
 

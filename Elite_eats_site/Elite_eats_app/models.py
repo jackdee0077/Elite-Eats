@@ -5,12 +5,12 @@ from django.urls import reverse_lazy
 
 
 # Create your models here.
-
 class Tag(models.Model):
     hashtag = models.CharField(max_length=100)
 
-    def _str_(self):
+    def __str__(self):
         return self.hashtag
+        
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=80)
@@ -19,7 +19,7 @@ class Restaurant(models.Model):
     state = models.CharField(max_length=2)
     zip_code = models.CharField(max_length=5)
     hashtag = models.ManyToManyField(Tag, blank=True)
-
+    
     class Meta:
         verbose_name_plural = "Restaurants"
     
@@ -30,6 +30,8 @@ class Restaurant(models.Model):
 class Post(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
     review = models.TextField(max_length=1500)
+    hashtag = models.ManyToManyField(Tag, blank=True)
+
 
    #we made this image( was post )
 class Image(models.Model):
@@ -37,5 +39,5 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return self.title
+        return self.image
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
