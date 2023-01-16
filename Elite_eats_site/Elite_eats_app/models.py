@@ -14,6 +14,7 @@ class Tag(models.Model):
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
     address = models.CharField(max_length=60)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=2)

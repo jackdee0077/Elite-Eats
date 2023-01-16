@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views import View
@@ -68,6 +69,9 @@ class DirectoryView(View):
             )
 
 class PostView(View):
+    
+    submitted = False
+
     
     submitted = False
 

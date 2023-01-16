@@ -15,4 +15,11 @@ class ImageForm(ModelForm):
 class UpdateForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['review']
+        restaurant = Restaurant.name
+        fields = ['review', 'restaurant']
+
+class ImageForm(forms.ModelForm):
+    """Form for the image model"""
+    class Meta:
+        model = Image
+        fields = ('title', 'image')
