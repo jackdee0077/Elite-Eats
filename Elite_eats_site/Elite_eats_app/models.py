@@ -23,10 +23,8 @@ class Restaurant(models.Model):
     class Meta:
         verbose_name_plural = "Restaurants"
     
-    def _str_(self):
+    def __str__(self):
         return self.name
-
-    # zip_code = models.CharField(max_length=5)
 
 
 class Post(models.Model):

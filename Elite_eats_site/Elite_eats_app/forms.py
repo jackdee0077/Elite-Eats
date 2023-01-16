@@ -4,10 +4,15 @@ from .models import Post, Image, Restaurant
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        restaurant = Restaurant.objects.name
+        restaurant = Restaurant.objects.all()
         fields = ['restaurant', 'review']
 
 class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = ('title', 'image',)
+
+class UpdateForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['review']

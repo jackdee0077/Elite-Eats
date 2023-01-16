@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center><img src="https://i.ibb.co/9hcLCGr/Elite-Eats.png" alt="connect" style="max-height:300px"></center>
+    <center><img src="https://i.ibb.co/9hcLCGr/Elite-Eats.png" alt="connect" style="max-height:300px"></center>
 
-<center><h3>Update Restaurant Review</h3></center>
-<br>
-{{ review }}
-
+    <center><h3>Update Restaurant Review</h3></center>
+        <br/>
+        <form action="" method=POST>
+            {% csrf_token%}
+            {{ form.as_p }}
+            <br/>
+            <input type="submit" value="Update" class="btn btn-secondary">
+        </form>
 
 {% endblock %}

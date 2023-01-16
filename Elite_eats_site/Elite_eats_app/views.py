@@ -1,16 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views import View
 from .models import Restaurant
-from Elite_eats_app.models import Restaurant, Post
-from Elite_eats_app.forms import PostForm
+from Elite_eats_app.models import Restaurant, Post, Image
+from Elite_eats_app.forms import PostForm, UpdateForm
 from .forms import ImageForm
 from django.http import HttpResponseRedirect
-# from django.views.generic import 
+from django.urls import reverse_lazy
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
+    
+    def get(self, request):
+        reviews = Post.objects.all()
+
+        html_data = {
+            'all_reviews': reviews,
+        }
+
+        return render(
+            request=request,
+            template_name='home.html',
+            context=html_data,
+        )
 
 class TrendingView(View):
     def get(self, request):
@@ -73,6 +86,7 @@ class PostView(View):
             context=html_data,
         )
 
+
     def post(self, request):
         reviews = Post.objects.all()
 
@@ -90,25 +104,45 @@ class PostView(View):
             template_name='review.html',
             context=html_data,
         )
-def image_upload_view(request):
-    """Process images uploaded by users"""
-    form = ImageForm
-    submitted = False
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            # Get the current instance object to display in the template
-            img_obj = form.instance
-            return HttpResponseRedirect('/upload.html?submitted=True'),
-            return render(request, 'upload.html', {'form': form, 'img_obj': img_obj})
-    else:
-        form = ImageForm()
-        if 'submitted' in request.GET:
-            submitted = True
-        return render(request, 'upload.html', {'form': form, 'submitted':submitted})
 
+class ImageUploadView(View):
+    submitted = False
+    model = Image
+    form_class = ImageForm
+    success_url = reverse_lazy('upload')
+    template_name = 'upload.html'
+
+    def get(self, request,*args, **kwargs):
+        form = self.form_class()
+
+        html_data = {
+                'image': form,
+                'from': form }
+                
+        return render(request, self.template_name, {'form': ImageForm})
+
+
+
+        return render(
+            request=request,
+            template_name='home.html',
+            context=html_data,
+        )
+# added update review function      
 def update_review(request, review_id ):
     review = Post.objects.get(pk=review_id)
-    return render(request, 'review.html',
-    {'review': review})
+    form = UpdateForm(request.POST or None, instance=review)
+    if form.is_valid():
+        form.save()
+        return redirect('review')
+
+    return render(request, 'update_review.html',
+    {'review': review,
+    'form': form})
+
+#added delete review function
+def delete_review(request, review_id ):
+    review = Post.objects.get(pk=review_id)
+    review.delete()
+
+    return redirect('review')
