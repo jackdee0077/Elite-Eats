@@ -8,10 +8,18 @@ from Elite_eats_app.forms import PostForm, UpdateForm
 from .forms import ImageForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from Elite_eats_app.forms import PostForm, ImageForm
+#from .forms import ImageForm
+from django.http import HttpResponseRedirect
+# from django.views.generic import 
+from django.urls import reverse_lazy
+
+
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
     
+
     def get(self, request):
         reviews = Post.objects.all()
 
@@ -24,6 +32,7 @@ class HomePageView(TemplateView):
             template_name='home.html',
             context=html_data,
         )
+
 
 class TrendingView(View):
     def get(self, request):
@@ -105,21 +114,28 @@ class PostView(View):
             context=html_data,
         )
 
+
+
+
+
 class ImageUploadView(View):
     submitted = False
     model = Image
     form_class = ImageForm
     success_url = reverse_lazy('upload')
+    success_url = reverse_lazy('home')
     template_name = 'upload.html'
 
     def get(self, request,*args, **kwargs):
         form = self.form_class()
-
+        return render(request, self.template_name, {'form': ImageForm})
         html_data = {
                 'image': form,
                 'from': form }
+
                 
         return render(request, self.template_name, {'form': ImageForm})
+
 
 
 
@@ -128,6 +144,7 @@ class ImageUploadView(View):
             template_name='home.html',
             context=html_data,
         )
+
 # added update review function      
 def update_review(request, review_id ):
     review = Post.objects.get(pk=review_id)
@@ -144,5 +161,23 @@ def update_review(request, review_id ):
 def delete_review(request, review_id ):
     review = Post.objects.get(pk=review_id)
     review.delete()
-
     return redirect('review')
+
+        
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
+            html_data = {
+                'image': form,
+                'img_obj': form.instance }
+
+            return render(
+                request=request,
+                template_name='home.html',
+                context=html_data,
+            )
+
+       
+
