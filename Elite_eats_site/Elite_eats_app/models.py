@@ -1,6 +1,8 @@
 from django.db import models
 # from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
+from django.urls import reverse
+
 # from .forms import PostForm
 
 
