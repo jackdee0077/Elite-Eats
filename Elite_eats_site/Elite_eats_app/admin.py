@@ -20,4 +20,7 @@ admin.site.register(Restaurant, RestaurantAdmin)
 
 
 
+
+
+
 # Register your models here.

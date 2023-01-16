@@ -1,6 +1,8 @@
 from django.db import models
 # from django.views.generic import ListView, CreateView
+from django.urls import reverse_lazy
 from django.urls import reverse
+
 # from .forms import PostForm
 
 
@@ -23,8 +25,23 @@ class Restaurant(models.Model):
     class Meta:
         verbose_name_plural = "Restaurants"
     
-    def _str_(self):
+    def __str__(self):
         return self.name
+
+
+
+class Post(models.Model):
+    restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
+    review = models.TextField(max_length=1500)
+
+   #we made this image( was post )
+class Image(models.Model):
+    title = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title
+    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
 
     # zip_code = models.CharField(max_length=5)
 
@@ -44,3 +61,4 @@ class Image(models.Model):
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
     def get_absolute_url(self):
            return reverse('home')
+
