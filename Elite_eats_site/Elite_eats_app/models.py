@@ -27,7 +27,7 @@ class Restaurant(models.Model):
     
     def __str__(self):
         return self.name
-
+        
 
 class Post(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
