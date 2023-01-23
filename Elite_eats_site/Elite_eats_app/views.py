@@ -129,21 +129,21 @@ class ImageUploadView(View):
     def get(self, request,*args, **kwargs):
         form = self.form_class()
         return render(request, self.template_name, {'form': ImageForm})
-        html_data = {
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
+            html_data = {
                 'image': form,
-                'from': form }
+                'img_obj': form.instance }
 
-                
-        return render(request, self.template_name, {'form': ImageForm})
-
-
-
-
-        return render(
-            request=request,
-            template_name='home.html',
-            context=html_data,
-        )
+            return render(
+                request=request,
+                template_name='home.html',
+                context=html_data,
+            )
 
 # added update review function      
 def update_review(request, review_id ):
