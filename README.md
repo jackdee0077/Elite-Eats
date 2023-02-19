@@ -34,39 +34,31 @@ pip install django
 4. Install dependencies
 pip install -r requirements.txt
 
-5.Cd Elite_eats_site
+5.Pip install pillow 
 
-6. Run Django
+6.Cd Elite_eats_site
+
+7. Run Django
 python manage.py runserver
 And go to http://localhost:8000
 
-7.Install dependencies
- pip install -r requirements.txt
+8. python3 / python manage.py createsuperuser 
+Email:Tooleet2022@gmail.com
+Username: Tooleet
+Password:Valdanton
 
-
- 8. Run Django
- python manage.py runserver
- And go to http://localhost:8000
-
- 9.Pip install pillow 
-
- 10. python3 / python manage.py createsuperuser 
- Email:Tooleet2022@gmail.com
- Username: Tooleet
- Password:Valdanton
-
- FOLLOW THE URLS BELOW FOR EACH PAGE
- ELITE EATS SITE 
- HOME PAGE:
- http://127.0.0.1:8000/
- TRNDING PAGE:
- http://127.0.0.1:8000/trending.html
- DIRECTORY PAGE:
- http://127.0.0.1:8000/directory.html
- REVIEW PAGE:
- http://127.0.0.1:8000/review.html
- UPLOAD PAGE:
- http://127.0.0.1:8000/upload
+FOLLOW THE URLS BELOW FOR EACH PAGE
+ELITE EATS SITE 
+HOME PAGE:
+http://127.0.0.1:8000/
+TRNDING PAGE:
+http://127.0.0.1:8000/trending.html
+DIRECTORY PAGE:
+http://127.0.0.1:8000/directory.html
+REVIEW PAGE:
+http://127.0.0.1:8000/review.html
+UPLOAD PAGE:
+http://127.0.0.1:8000/upload
 
 wow group project
 ![Screenshot 2022-12-19 at 8 40 58 PM](https://user-images.githubusercontent.com/92664733/209028842-4de4dc9d-3f74-406e-8dcd-07ac3c8f433c.png)
