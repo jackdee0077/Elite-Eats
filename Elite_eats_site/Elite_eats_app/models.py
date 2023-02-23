@@ -3,8 +3,6 @@ from django.db import models
 from django.urls import reverse_lazy
 from django.urls import reverse
 
-# from .forms import PostForm
-
 
 # Create your models here.
 
@@ -29,7 +27,7 @@ class Restaurant(models.Model):
         return self.name
 
 
-
+'''
 class Post(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
     review = models.TextField(max_length=1500)
@@ -45,6 +43,8 @@ class Image(models.Model):
 
     # zip_code = models.CharField(max_length=5)
 
+    #This looks like a duplicate (Tony and VAl)
+'''
 
 class Post(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
