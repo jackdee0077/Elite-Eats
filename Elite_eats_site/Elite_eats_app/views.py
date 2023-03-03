@@ -143,7 +143,13 @@ class ImageUploadView(View):
                 request=request,
                 template_name='home.html',
                 context=html_data,
-            )
+            )  
+        
+        else:
+            return render(
+            request=request,
+            template_name=self.template_name,
+            context={'form': ImageForm})
 
 # added update review function      
 def update_review(request, review_id ):

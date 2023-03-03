@@ -9,12 +9,14 @@ class PostForm(forms.ModelForm):
         model = Post
         restaurant = Restaurant.objects.all()
         fields = ['restaurant', 'review']
-
+"""
 class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = ('title', 'image',)
 
+        # This looks like a duplicate ( Tony and VAl)
+"""
 class UpdateForm(ModelForm):
     class Meta:
         model = Post
