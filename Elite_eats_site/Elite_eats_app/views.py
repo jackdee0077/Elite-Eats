@@ -151,7 +151,7 @@ class ImageUploadView(View):
             template_name=self.template_name,
             context={'form': ImageForm})
 
-# added update review function      
+# added update review functio      
 def update_review(request, review_id ):
     review = Post.objects.get(pk=review_id)
     form = UpdateForm(request.POST or None, instance=review)
