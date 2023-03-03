@@ -8,12 +8,14 @@ class PostForm(forms.ModelForm):
         restaurant = Restaurant.objects.all()
         hastag = Tag.hashtag
         fields = ['restaurant', 'review', 'hashtag' ]
-
+        
 class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = ('title', 'image',)
 
+        # This looks like a duplicate ( Tony and VAl)
+"""
 class UpdateForm(ModelForm):
     class Meta:
         model = Post
