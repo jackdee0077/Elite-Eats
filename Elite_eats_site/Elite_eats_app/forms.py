@@ -1,25 +1,18 @@
 
 from django.forms import ModelForm
-from .models import Post, Image, Restaurant
-from .models import Post, Image, Restaurant
+from .models import Comment, Image, Restaurant
+from .models import Comment, Image, Restaurant
 from django import forms
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model = Post
+        model = Comment
         restaurant = Restaurant.objects.all()
         fields = ['restaurant', 'review']
-"""
-class ImageForm(ModelForm):
-    class Meta:
-        model = Image
-        fields = ('title', 'image',)
 
-        # This looks like a duplicate ( Tony and VAl)
-"""
 class UpdateForm(ModelForm):
     class Meta:
-        model = Post
+        model = Comment
         fields = ['review']
         restaurant = Restaurant.name
         fields = ['review', 'restaurant']

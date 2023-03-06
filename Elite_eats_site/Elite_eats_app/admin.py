@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Post
-from .models import Restaurant
-from .models import Image
-admin.site.register(Image)
+from .models import Comment , Restaurant , Image, SiteUsers
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -17,6 +14,11 @@ class TagAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Restaurant, RestaurantAdmin)
+admin.site.register(Comment, PostAdmin)
+admin.site.register(Image)
+admin.site.register(SiteUsers)
+
+
 
 
 

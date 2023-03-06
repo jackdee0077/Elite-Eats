@@ -26,27 +26,7 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
-
-'''
-class Post(models.Model):
-    restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
-    review = models.TextField(max_length=1500)
-
-   #we made this image( was post )
-class Image(models.Model):
-    title = models.CharField(max_length=500)
-    image = models.ImageField(upload_to='images/')
-
-    def __str__(self):
-        return self.title
-    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
-
-    # zip_code = models.CharField(max_length=5)
-
-    #This looks like a duplicate (Tony and VAl)
-'''
-
-class Post(models.Model):
+class Comment(models.Model):
     restaurant = models.ForeignKey(Restaurant, blank=True, null=True, on_delete=models.CASCADE)
     review = models.TextField(max_length=1500)
 
@@ -61,4 +41,11 @@ class Image(models.Model):
     image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
     def get_absolute_url(self):
            return reverse('home')
+    
+class SiteUsers(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField('User Email')
 
+    def __str__(self):
+         return self.first_name + '' + self.last_name

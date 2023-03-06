@@ -2,18 +2,10 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views import View
-from .models import Restaurant
-from Elite_eats_app.models import Restaurant, Post, Image
-from Elite_eats_app.forms import PostForm, UpdateForm
-from .forms import ImageForm
+from Elite_eats_app.models import Restaurant, Comment, Image
+from Elite_eats_app.forms import PostForm, UpdateForm, ImageForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from Elite_eats_app.forms import PostForm, ImageForm
-#from .forms import ImageForm
-from django.http import HttpResponseRedirect
-# from django.views.generic import 
-from django.urls import reverse_lazy
-
 
 
 class HomePageView(TemplateView):
@@ -21,7 +13,24 @@ class HomePageView(TemplateView):
     
 
     def get(self, request):
-        reviews = Post.objects.all()
+        reviews = Comment.objects.all()
+
+        html_data = {
+            'all_reviews': reviews,
+        }
+
+        return render(
+            request=request,
+            template_name='home.html',
+            context=html_data,
+        )
+    
+class HomePageView2(TemplateView):
+    template_name = 'home2.html'
+    
+
+    def get(self, request):
+        reviews = Comment.objects.all()
 
         html_data = {
             'all_reviews': reviews,
@@ -82,7 +91,7 @@ class PostView(View):
 
     def get(self, request):
         review_form = PostForm()
-        reviews = Post.objects.all()
+        reviews = Comment.objects.all()
 
         html_data = {
             'all_reviews': reviews,
@@ -97,7 +106,7 @@ class PostView(View):
 
 
     def post(self, request):
-        reviews = Post.objects.all()
+        reviews = Comment.objects.all()
 
         print(request.POST)
         review_form = PostForm(request.POST)
@@ -113,9 +122,6 @@ class PostView(View):
             template_name='review.html',
             context=html_data,
         )
-
-
-
 
 
 class ImageUploadView(View):
@@ -153,7 +159,7 @@ class ImageUploadView(View):
 
 # added update review functio      
 def update_review(request, review_id ):
-    review = Post.objects.get(pk=review_id)
+    review = Comment.objects.get(pk=review_id)
     form = UpdateForm(request.POST or None, instance=review)
     if form.is_valid():
         form.save()
@@ -165,7 +171,7 @@ def update_review(request, review_id ):
 
 #added delete review function
 def delete_review(request, review_id ):
-    review = Post.objects.get(pk=review_id)
+    review = Comment.objects.get(pk=review_id)
     review.delete()
     return redirect('review')
 
