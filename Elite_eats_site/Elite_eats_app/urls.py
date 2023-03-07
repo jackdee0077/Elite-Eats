@@ -15,6 +15,5 @@ urlpatterns = [
     path('upload', ImageUploadView.as_view(), name='upload'),
     path('update_review/<int:review_id>', update_review, name='update-review'),
     path('delete_review/<int:review_id>', delete_review, name='delete-review'),
-    
+    path('home/', HomePageView.as_view(), name='home2')
     ]
-

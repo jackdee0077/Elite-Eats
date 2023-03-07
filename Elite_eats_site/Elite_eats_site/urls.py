@@ -22,8 +22,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Elite_eats_app.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+    
+# configure admin titles
+admin.site.site_header = "Elite Eats Administration Portal"
+admin.site.site_title = "Elite Eats Portal"
+admin.site.index_title = "Welcome To Admin Portal"
